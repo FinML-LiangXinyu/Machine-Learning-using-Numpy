@@ -58,7 +58,7 @@ $\delta^{(T)}=\frac{\partial L}{\partial z^{\left(T\right)}}={h}^{\left(T\right)
 
 激活函数为： $y=tanh(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}$。则： $\sigma^\prime\left(z^{\left(t\right)}\right)=1-h^{\left(t\right)}\odot h^{\left(t\right)}$ 
 
-激活函数为：$y=relu(x)=max(0,x)$。则： $\sigma^\prime\left({z_k}^{\left(t\right)}\right)=\left\{\begin{array}{}1,if\quad {z_k}^{(t)}>0\\0,if\quad {z_k}^{(t)}≤0\end{array}
+激活函数为： $y=relu(x)=max(0,x)$ 。则： $\sigma^\prime\left({z_k}^{\left(t\right)}\right)=\left\{\begin{array}{}1,if\quad {z_k}^{(t)}>0\\0,if\quad {z_k}^{(t)}≤0\end{array}
 \right.$ 
 
 对于连续实例，损失函数为如下均方误损失函数：
