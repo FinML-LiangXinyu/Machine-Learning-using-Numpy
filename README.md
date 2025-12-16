@@ -34,7 +34,7 @@ $dL=tr\left({\frac{\partial L}{\partial z^{\left(t\right)}}}^Tdz^{\left(t\right)
 
 $\delta^{\left(t-1\right)}=\frac{\partial L}{\partial z^{\left(t-1\right)}}=W^{\left(t\right)}\delta^{\left(t\right)}\odot\sigma^\prime\left(z^{\left(t-1\right)}\right)$
 
-对于离散实例，有该实例预测为 $c_k$ 的概率为： $\pi_k=p\left(y=c_k\middle| x\right)=\frac{e^{{z_k}^Tx}}{\sum_{k=1}^{K}e^{{z_k}^Tx}}$ 。其中， $z_k$ 是对应类别 $c_k$ 的权重向量： $z_k=\left[z_k^1,z_k^2,z_k^3,\ldots,z_k^m\right]^T\in R^m$ 。此时， $MLP$ 神经网络的输出层 $h^{(T)}$ 为一向量，向量中的元素 $h_k^{(T)}$ 表示为： ${{h}_k}^{\left(T\right)}=\frac{e^{{z_k}^{(T)}}}{\sum_{c=1}^{C}e^{{z_c}^{(T)}}}$ 。
+对于离散实例，有该实例预测为 $c_k$ 的概率为： $\pi_k=p\left(y=c_k\middle| x\right)=\frac{e^{{z_k}^Tx}}{\sum_{k=1}^{K}e^{{z_k}^Tx}}$ 。其中， $z_k$ 是对应类别 $c_k$ 的权重向量： $z_k=\left[z_k^1,z_k^2,z_k^3,\ldots,z_k^m\right]^T\in R^m$ 。此时， $MLP$ 神经网络的输出层 $h^{(T)}$ 为一向量，向量中的元素 $h_k^{(T)}$ 表示为： ${h_k}^{\left(T\right)}=\frac{e^{{z_k}^{\left(T\right)}}}{\sum_{c=1}^{C}e^{{z_c}^{\left(T\right)}}}$ 。
 
 输出层 $h^{(T)}$ 中元素对向量中第 $k$ 个元素的中间变量 $z_k^{(T)}$ 的偏导数为：
 
