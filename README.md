@@ -6,13 +6,13 @@
 
 $z^{\left(t\right)}={W^{\left(t\right)}}^Th^{\left(t-1\right)}+b^{\left(t\right)}$
 
-$h^{\left(t\right)}=\sigma(z^{\left(t\right)})=\sigma({W^{\left(t\right)}}^Th^{\left(t-1\right)}+b^{\left(t\right)})$
+$h^{\left(t\right)}=\sigma\left(z^{\left(t\right)}\right)=\sigma\left({W^{\left(t\right)}}^Th^{\left(t-1\right)}+b^{\left(t\right)}\right)$
 
 非输出层的非线性变换 $\sigma(·)$ 又称为激活函数，输出层的非线性变换 $\sigma(·)$ 通常采用 $softmax$ 函数：
 
-$h^{(T)}=softmax(z^{(T)})$
+$h^{\left(T\right)}=softmax\left(z^{\left(T\right)}\right)$
 
-${h_k}^{(T)}=softmax({z_k}^{(T)})=\frac{e^{{z_k}^{(T)}}}{\sum_{k=1}^{K}e^{{z_k}^{(T)}}}$
+$h_k^{\left(T\right)}=softmax\left(z_k^{\left(T\right)}\right)=\frac{e^{{z_k}^{(T)}}}{\sum_{k=1}^{K}e^{{z_k}^{(T)}}}$
 
 令 ${\delta}^{\left(t\right)}$ 表示 $\frac{\partial L}{\partial z^{\left(t\right)}}$ ，利用矩阵微分公式：
 
@@ -24,11 +24,11 @@ $\frac{\partial L}{\partial {W^{\left(t\right)}}^T}=\delta^{\left(t\right)}{h^{\
 
 对于第 $t-1$ 层隐层，存在：
 
-$h^{\left(t-1\right)}=\sigma(z^{\left(t-1\right)})=\sigma({W^{\left(t-1\right)}}^Th^{\left(t-2\right)}+b^{\left(t-1\right)})$
+$h^{\left(t-1\right)}=\sigma\left(z^{\left(t-1\right)}\right)=\sigma\left({W^{\left(t-1\right)}}^Th^{\left(t-2\right)}+b^{\left(t-1\right)}\right)$
 
 利用矩阵微分公式：
 
-$dL=tr\left({\frac{\partial L}{\partial z^{\left(t\right)}}}^Tdz^{\left(t\right)}\right)=tr\left({\delta^{\left(t\right)}}^T{W^{\left(t\right)}}^T\sigma^\prime\left(z^{\left(t-1\right)}\right)\odot d z^{\left(t-1\right)}\right)=tr\left({(W^{\left(t\right)}\delta^{\left(t\right)})}^T\sigma^\prime\left(z^{\left(t-1\right)}\right)\odot d z^{\left(t-1\right)}\right)=tr\left({(W^{\left(t\right)}\delta^{\left(t\right)}\odot\sigma^\prime\left(z^{\left(t-1\right)}\right))}^Tdz^{\left(t-1\right)}\right)$
+$dL=tr\left({\frac{\partial L}{\partial z^{\left(t\right)}}}^Tdz^{\left(t\right)}\right)=tr\left({\delta^{\left(t\right)}}^T{W^{\left(t\right)}}^T\sigma^\prime\left(z^{\left(t-1\right)}\right)\odot d z^{\left(t-1\right)}\right)=tr\left(\left(W^{\left(t\right)}\delta^{\left(t\right)}\right)^T\sigma^\prime\left(z^{\left(t-1\right)}\right)\odot d z^{\left(t-1\right)}\right)=tr\left(\left(W^{\left(t\right)}\delta^{\left(t\right)}\odot\sigma^\prime\left(z^{\left(t-1\right)}\right)\right)^Tdz^{\left(t-1\right)}\right)$
 
 可得第 $t-1$ 层隐层的 ${\delta}^{\left(t-1\right)}$ 和第 $t$ 层隐层的 ${\delta}^{\left(t\right)}$ 之间存在如下关系式：
 
@@ -38,7 +38,7 @@ $\delta^{\left(t-1\right)}=\frac{\partial L}{\partial z^{\left(t-1\right)}}=W^{\
 
 输出层 $h^{(T)}$ 中元素对向量中第 $k$ 个元素的中间变量 $z_k^{(T)}$ 的偏导数为：
 
-$\frac{\partial{{h}_k}^{\left(T\right)}}{\partial{z_k}^{\left(T\right)}}={{h}_k}^{\left(T\right)}(1-{h_k}^{(T)})$
+$\frac{\partial{{h}_k}^{\left(T\right)}}{\partial{z_k}^{\left(T\right)}}=h_k^{\left(T\right)}\left(1-h_k^{\left(T\right)}\right)$
 
 $\frac{\partial{{h}_{c\neq k}}^{(T)}}{\partial{z_k}^{\left(T\right)}}=-{{h}_c}^{(T)}{{h}_k}^{(T)}$
 
@@ -46,24 +46,24 @@ $\frac{\partial{{h}_{c\neq k}}^{(T)}}{\partial{z_k}^{\left(T\right)}}=-{{h}_c}^{
 
 $L=-\sum_{c=1}^{C}{y_cln\left({{h}_c}^{(T)}\right)}$
 
-则输出层对应的 ${\delta_k}^{\left(T\right)}$和${\delta}^{\left(T\right)}$ 如下：
+则输出层对应的 ${\delta_k}^{\left(T\right)}$ 和 ${\delta}^{\left(T\right)}$ 如下：
 
 ${\delta_k}^{\left(T\right)}=\frac{\partial L}{\partial{z_k}^{\left(T\right)}}=-\sum_{c=1}^{C}{\frac{y_c}{{{h}_c}^{(T)}}\frac{\partial{{h}_c}^{(T)}}{\partial{z_k}^{\left(T\right)}}}=-\frac{y_k}{{{h}_k}^{(T)}}{{h}_k}^{(T)}(1-h_k)+\sum_{c\neq k}{\frac{y_c}{{{h}_c}^{\left(T\right)}}{{h}_c}^{\left(T\right)}{{h}_k}^{(T)}}=-y_k(1-{{h}_k}^{(T)})+\sum_{c\neq k}{y_c{{h}_k}^{\left(T\right)}}=-y_k(1-{{h}_k}^{(T)})+{{h}_k}^{\left(T\right)}(1-y_k)={{h}_k}^{\left(T\right)}-y_k$
 
 $\delta^{(T)}=\frac{\partial L}{\partial z^{\left(T\right)}}={h}^{\left(T\right)}-y$
 
-针对不同的激活函数 $\sigma(·)$，$\sigma^\prime\left(z^{\left(t\right)}\right)$ 有着不同的表达形式：
+针对不同的激活函数 $\sigma(·)$ ， $\sigma^\prime\left(z^{\left(t\right)}\right)$ 有着不同的表达形式：
 
-激活函数为： $y=sigmoid(x)=\frac{1}{1+e^{-x}}$。则:$\sigma^\prime\left(z^{\left(t\right)}\right)=h^{\left(t\right)}\odot(1-h^{\left(t\right)})$ 
+激活函数为： $y=sigmoid(x)=\frac{1}{1+e^{-x}}$。则： $\sigma^\prime\left(z^{\left(t\right)}\right)=h^{\left(t\right)}\odot(1-h^{\left(t\right)})$ 
 
-激活函数为： $y=tanh(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}$。则：$\sigma^\prime\left(z^{\left(t\right)}\right)=1-h^{\left(t\right)}\odot h^{\left(t\right)}$ 
+激活函数为： $y=tanh(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}$。则： $\sigma^\prime\left(z^{\left(t\right)}\right)=1-h^{\left(t\right)}\odot h^{\left(t\right)}$ 
 
-激活函数为：$y=relu(x)=max(0,x)$。则：$\sigma^\prime\left({z_k}^{\left(t\right)}\right)=\left\{\begin{array}{}1,if\quad {z_k}^{(t)}>0\\0,if\quad {z_k}^{(t)}≤0\end{array}  
+激活函数为：$y=relu(x)=max(0,x)$。则： $\sigma^\prime\left({z_k}^{\left(t\right)}\right)=\left\{\begin{array}{}1,if\quad {z_k}^{(t)}>0\\0,if\quad {z_k}^{(t)}≤0\end{array}
 \right.$ 
 
 对于连续实例，损失函数为如下均方误损失函数：
 
-$L=\frac{1}{2}(y-h^{(T)})^2$
+$L=\frac{1}{2}\left(y-h^{\left(T\right)}\right)^2$
 
 回归算法输出层 $h^{(T)}$ 为一标量，输出层对应的 ${\delta}^{\left(T\right)}$ 同样为一标量：
 
