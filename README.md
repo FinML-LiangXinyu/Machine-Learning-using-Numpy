@@ -48,7 +48,7 @@ $L=-\sum_{c=1}^{C}{y_cln\left({{h}_c}^{(T)}\right)}$
 
 则输出层对应的 ${\delta_k}^{\left(T\right)}$ 和 ${\delta}^{\left(T\right)}$ 如下：
 
-$\delta_k^{\left(T\right)}=\frac{\partial L}{\partial z_k^{\left(T\right)}}=-\sum_{c=1}^{C}{\frac{y_c}{h_c^{\left(T\right)}}\frac{\partial h_c^{\left(T\right)}}{\partial z_k^{\left(T\right)}}}=-\frac{y_k}{h_k^{\left(T\right)}}h_k^{\left(T\right)}\left(1-h_k\right)+\sum_{c\neq k}{\frac{y_c}{{h_c}^{\left(T\right)}}h_c^{\left(T\right)}h_k^{\left(T\right)}}=-y_k\left(1-h_k^{\left(T\right)}\right)+\sum_{c\neq k}{y_ch_k^{\left(T\right)}}=-y_k\left(1-h_k^{\left(T\right)}\right)+h_k^{\left(T\right)}\left(1-y_k\right)=h_k^{\left(T\right)}-y_k$ 
+$\delta_k^{\left(T\right)}=\frac{\partial L}{\partial z_k^{\left(T\right)}}=-\sum_{c=1}^{C}{\frac{y_c}{h_c^{\left(T\right)}}\frac{\partial h_c^{\left(T\right)}}{\partial z_k^{\left(T\right)}}}=-\frac{y_k}{h_k^{\left(T\right)}}h_k^{\left(T\right)}\left(1-h_k\right)+\sum_{c\neq k}{\frac{y_c}{{h_c}^{\left(T\right)}}h_c^{\left(T\right)} h_k^{\left(T\right)}}=-y_k\left(1-h_k^{\left(T\right)}\right)+\sum_{c\neq k}{y_ch_k^{\left(T\right)}}=-y_k\left(1-h_k^{\left(T\right)}\right)+h_k^{\left(T\right)}\left(1-y_k\right)=h_k^{\left(T\right)}-y_k$ 
 
 $\delta^{\left(T\right)}=\frac{\partial L}{\partial z^{\left(T\right)}}=h^{\left(T\right)}-y$
 
