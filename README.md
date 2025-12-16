@@ -48,7 +48,8 @@ $L=-\sum_{c=1}^{C}{y_cln\left({{h}_c}^{(T)}\right)}$
 
 则输出层对应的 ${\delta_k}^{\left(T\right)}$ 和 ${\delta}^{\left(T\right)}$ 如下：
 
-${\delta_k}^{\left(T\right)}=\frac{\partial L}{\partial{z_k}^{\left(T\right)}}=-\sum_{c=1}^{C}{\frac{y_c}{{{h}_c}^{(T)}}\frac{\partial{{h}_c}^{(T)}}{\partial{z_k}^{\left(T\right)}}}=-\frac{y_k}{{{h}_k}^{(T)}}{{h}_k}^{(T)}(1-h_k)+\sum_{c\neq k}{\frac{y_c}{{{h}_c}^{\left(T\right)}}{{h}_c}^{\left(T\right)}{{h}_k}^{(T)}}=-y_k(1-{{h}_k}^{(T)})+\sum_{c\neq k}{y_c{{h}_k}^{\left(T\right)}}=-y_k(1-{{h}_k}^{(T)})+{{h}_k}^{\left(T\right)}(1-y_k)={{h}_k}^{\left(T\right)}-y_k$
+
+${\delta_k}^{\left(T\right)}=\frac{\partial L}{\partial{z_k}^{\left(T\right)}}=-\sum_{c=1}^{C}{\frac{y_c}{{{h}_c}^{(T)}}\frac{\partial{{h}_c}^{(T)}}{\partial{z_k}^{\left(T\right)}}}=-\frac{y_k}{{{h}_k}^{(T)}}{{h}_k}^{(T)}(1-h_k)+\sum_{c\neq k}{\frac{y_c}{{{h}_c}^{\left(T\right)}}{{h}_c}^{\left(T\right)}{{h}_k}^{(T)}}=-y_k(1-{{h}_k}^{(T)})+\sum_{c\neq k}{y_c{{h}_k}^{\left(T\right)}}=-y_k(1-{{h}_k}^{(T)})+{{h}_k}^{\left(T\right)}(1-y_k)={{h}_k}^{\left(T\right)}-y_k$ 
 
 $\delta^{(T)}=\frac{\partial L}{\partial z^{\left(T\right)}}={h}^{\left(T\right)}-y$
 
@@ -58,8 +59,10 @@ $\delta^{(T)}=\frac{\partial L}{\partial z^{\left(T\right)}}={h}^{\left(T\right)
 
 激活函数为： $y=tanh(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}$。则： $\sigma^\prime\left(z^{\left(t\right)}\right)=1-h^{\left(t\right)}\odot h^{\left(t\right)}$ 
 
-激活函数为： $y=relu(x)=max(0,x)$ 。则： $\sigma^\prime\left({z_k}^{\left(t\right)}\right)=\left\{\begin{array}{}1,if\quad {z_k}^{(t)}>0\\0,if\quad {z_k}^{(t)}≤0\end{array}
-\right.$ 
+激活函数为： $y=relu(x)=max(0,x)$ 。则：
+
+$\sigma^\prime\left({z_k}^{\left(t\right)}\right)=\left\{\begin{array}{}1,if\quad {z_k}^{(t)}>0\\0,if\quad {z_k}^{(t)}≤0\end{array}
+\right.$
 
 对于连续实例，损失函数为如下均方误损失函数：
 
