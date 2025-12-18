@@ -1,8 +1,8 @@
 # Machine-Learning-using-Numpy
 ## 一、多层感知机神经网络
-对于实例 ${(x,y)}$ ，有 $x=\left[x^1,x^2,x^3,\ldots,x^m\right]^T\in\chi\subseteq R^m$ ， $\chi$ 表示 $m$ 维特征子空间，若 $y$ 为离散标签，有 $y\in\mathcal{V}={\{c_k\}}_{k=1,2,...,K}$ ，若 $y$ 为连续标签，有 $y\in R$ 。
+对于实例 $\left(x,y\right)$ ，有 $x=\left[x^1,x^2,x^3,\ldots,x^m\right]^T\in\chi\subseteq R^m$ ， $\chi$ 表示 $m$ 维特征子空间，若 $y$ 为离散标签，有 $y\in\mathcal{V}={\{c_k\}}_{k=1,2,...,K}$ ，若 $y$ 为连续标签，有 $y\in R$ 。
 
-对于 $T$ 层 $MLP$ 神经网络，用 $h$ 表示 $MLP$ 神经网络的隐层输入，假设第 $t$ 层隐层有 $m$ 个神经元，则有 $h^{(t)}=[h_1^{(t)},h_2^{(t)},...,h_m^{(t)}]$ 代表第 $t$ 层隐层的输出和第 $t+1$ 层隐层的输出。其中， $h^{(0)}=x$ ， $h^{(T)}$ 为 $MLP$ 神经网络的最终输出。利用矩阵 $W^{(t)}=[w_1^{(t)},w_2^{(t)},...,w_m^{(t)}]$ 和偏置 $b^{(t)}$ 将第 $t-1$ 层的输出 $h^{(t-1)}$ 转换为 $z^{(t)}=[z_1^{(t)},z_2^{(t)},...,z_m^{(t)}]$ ，再对 $z^{(t)}$ 进行非线性变换 $\sigma(·)$ 后，成为第 $t$ 层隐层的输出 $h^{(t)}$ 。上述关系用公式表示为：
+对于 $T$ 层 $MLP$ 神经网络，用 $h$ 表示 $MLP$ 神经网络的隐层输入，假设第 $t$ 层隐层有 $m$ 个神经元，则有 $h^{(t)}=\left[h_1^{(t)},h_2^{(t)},...,h_m^{(t)}\right]$ 代表第 $t$ 层隐层的输出和第 $t+1$ 层隐层的输出。其中， $h^{(0)}=x$ ， $h^{(T)}$ 为 $MLP$ 神经网络的最终输出。利用矩阵 $W^{(t)}=\left[w_1^{(t)},w_2^{(t)},...,w_m^{(t)}\right]$ 和偏置 $b^{(t)}$ 将第 $t-1$ 层的输出 $h^{(t-1)}$ 转换为 $z^{(t)}=\left[z_1^{(t)},z_2^{(t)},...,z_m^{(t)}\right]$ ，再对 $z^{(t)}$ 进行非线性变换 $\sigma(·)$ 后，成为第 $t$ 层隐层的输出 $h^{(t)}$ 。上述关系用公式表示为：
 
 $z^{\left(t\right)}={W^{\left(t\right)}}^Th^{\left(t-1\right)}+b^{\left(t\right)}$
 
@@ -12,7 +12,7 @@ $h^{\left(t\right)}=\sigma\left(z^{\left(t\right)}\right)=\sigma\left({W^{\left(
 
 $h^{\left(T\right)}=softmax\left(z^{\left(T\right)}\right)$
 
-$h_k^{\left(T\right)}=softmax\left(z_k^{\left(T\right)}\right)=\frac{e^{{z_k}^{(T)}}}{\sum_{k=1}^{K}e^{{z_k}^{(T)}}}$
+$h_k^{\left(T\right)}=softmax\left(z_k^{\left(T\right)}\right)=\frac{e^{z_k^{\left(T\right)}}}{\sum_{k=1}^{K}e^{z_k^{\left(T\right)}}}$
 
 令 ${\delta}^{\left(t\right)}$ 表示 $\frac{\partial L}{\partial z^{\left(t\right)}}$ ，利用矩阵微分公式：
 
@@ -34,13 +34,13 @@ $dL=tr\left({\frac{\partial L}{\partial z^{\left(t\right)}}}^Tdz^{\left(t\right)
 
 $\delta^{\left(t-1\right)}=\frac{\partial L}{\partial z^{\left(t-1\right)}}=W^{\left(t\right)}\delta^{\left(t\right)}\odot\sigma^\prime\left(z^{\left(t-1\right)}\right)$
 
-对于离散实例，有该实例预测为 $c_k$ 的概率为： $\pi_k=p\left(y=c_k\middle| x\right)=\frac{e^{{z_k}^Tx}}{\sum_{k=1}^{K}e^{{z_k}^Tx}}$ 。其中， $z_k$ 是对应类别 $c_k$ 的权重向量： $z_k=\left[z_k^1,z_k^2,z_k^3,\ldots,z_k^m\right]^T\in R^m$ 。此时， $MLP$ 神经网络的输出层 $h^{(T)}$ 为一向量，向量中的元素 $h_k^{(T)}$ 表示为： ${h_k}^{\left(T\right)}=\frac{e^{{z_k}^{\left(T\right)}}}{\sum_{c=1}^{C}e^{{z_c}^{\left(T\right)}}}$ 。
+对于离散实例，有该实例预测为 $c_k$ 的概率为： $\pi_k=p\left(y=c_k\middle| x\right)=\frac{e^{z_k^Tx}}{\sum_{k=1}^{K}e^{z_k^Tx}}$ 。其中， $z_k$ 是对应类别 $c_k$ 的权重向量： $z_k=\left[z_k^1,z_k^2,z_k^3,\ldots,z_k^m\right]^T\in R^m$ 。此时， $MLP$ 神经网络的输出层 $h^{\left(T\right)}$ 为一向量，向量中的元素 $h_k^{\left(T\right)}$ 表示为： $h_k^{\left(T\right)}=\frac{e^{{z_k}^{\left(T\right)}}}{\sum_{c=1}^{C}e^{z_c^{\left(T\right)}}}$ 。
 
-输出层 $h^{(T)}$ 中元素对向量中第 $k$ 个元素的中间变量 $z_k^{(T)}$ 的偏导数为：
+输出层 $h^{\left(T\right)}$ 中元素对向量中第 $k$ 个元素的中间变量 $z_k^{\left(T\right)}$ 的偏导数为：
 
 $\frac{\partial{{h}_k}^{\left(T\right)}}{\partial{z_k}^{\left(T\right)}}=h_k^{\left(T\right)}\left(1-h_k^{\left(T\right)}\right)$
 
-$\frac{\partial{{h}_{c\neq k}}^{(T)}}{\partial{z_k}^{\left(T\right)}}=-{{h}_c}^{(T)}{{h}_k}^{(T)}$
+$\frac{\partial{h_{c\neq k}}^{(T)}}{\partial{z_k}^{\left(T\right)}}=-{h_c}^{\left(T\right)}{h_k}^{\left(T\right)}$
 
 对于离散实例，损失函数为如下交叉熵损失函数：
 
@@ -52,19 +52,19 @@ $\delta_k^{\left(T\right)}=\frac{\partial L}{\partial z_k^{\left(T\right)}}=-\su
 
 $\delta^{\left(T\right)}=\frac{\partial L}{\partial z^{\left(T\right)}}=h^{\left(T\right)}-y$
 
-针对不同的激活函数 $\sigma(·)$ ， $\sigma^\prime\left(z^{\left(t\right)}\right)$ 有着不同的表达形式：
+针对不同的激活函数 $\sigma\left(·\right)$ ， $\sigma^\prime\left(z^{\left(t\right)}\right)$ 有着不同的表达形式：
 
-激活函数为： $y=sigmoid(x)=\frac{1}{1+e^{-x}}$。则： $\sigma^\prime\left(z^{\left(t\right)}\right)=h^{\left(t\right)}\odot(1-h^{\left(t\right)})$ 
+激活函数为： $y=sigmoid\left(x\right)=\frac{1}{1+e^{-x}}$。则： $\sigma^\prime\left(z^{\left(t\right)}\right)=h^{\left(t\right)}\odot(1-h^{\left(t\right)})$ 
 
-激活函数为： $y=tanh(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}$。则： $\sigma^\prime\left(z^{\left(t\right)}\right)=1-h^{\left(t\right)}\odot h^{\left(t\right)}$ 
+激活函数为： $y=tanh\left(x\right)=\frac{e^x-e^{-x}}{e^x+e^{-x}}$。则： $\sigma^\prime\left(z^{\left(t\right)}\right)=1-h^{\left(t\right)}\odot h^{\left(t\right)}$ 
 
-激活函数为： $y=relu(x)=max(0,x)$ 。则： $\sigma^\prime\left(z^{\left(t\right)}\right)=1,if\ z^{\left(t\right)}>0;=0,if\ z^{\left(t\right)}\le0$ 
+激活函数为： $y=relu\left(x\right)=max\left(0,x\right)$ 。则： $\sigma^\prime\left(z^{\left(t\right)}\right)=1,if\ z^{\left(t\right)}>0;=0,if\ z^{\left(t\right)}\le0$ 
 
 对于连续实例，损失函数为如下均方误损失函数：
 
 $L=\frac{1}{2}\left(y-h^{\left(T\right)}\right)^2$
 
-回归算法输出层 $h^{(T)}$ 为一标量，输出层对应的 ${\delta}^{\left(T\right)}$ 同样为一标量：
+回归算法输出层 $h^{\left(T\right)}$ 为一标量，输出层对应的 ${\delta}^{\left(T\right)}$ 同样为一标量：
 
 $\delta^{\left(T\right)}=\frac{\partial L}{\partial z^{\left(T\right)}}=h^{\left(T\right)}-y$
 ## 二、简单循环神经网络
@@ -78,7 +78,7 @@ $z_t=Vh_t+c$
 
 $\widehat{y_t}=softmax\left(z_t\right)$
 
-其中， $h_{t-1}$ 代表 $t-1$ 时刻的隐状态， $x_t$ 为时刻 $t$ 的输入，时刻 $t$ 的净输入 $s_t$ 经过 $tanh(·)$ 激活函数转换为 $t$ 时刻的隐状态，时刻 t 的净输入 $z_t$ 经过 $softmax(·)$ 转换为时刻 $t$ 的最终输出 $\widehat{y_t}$ ， $U$ 、 $W$ 、 $V$ 为神经网络的权重矩阵， $b$ 、 $c$ 为神经网络净输入的偏置向量。
+其中， $h_{t-1}$ 代表 $t-1$ 时刻的隐状态， $x_t$ 为时刻 $t$ 的输入，时刻 $t$ 的净输入 $s_t$ 经过 $tanh\left(·\right)$ 激活函数转换为 $t$ 时刻的隐状态，时刻 t 的净输入 $z_t$ 经过 $softmax\left(·\right)$ 转换为时刻 $t$ 的最终输出 $\widehat{y_t}$ ， $U$ 、 $W$ 、 $V$ 为神经网络的权重矩阵， $b$ 、 $c$ 为神经网络净输入的偏置向量。
 
  $S-RNN$ 结构单元表明：在时刻 $t$ ，时刻 $t$ 的输入 $x_t$ 和上一个时刻的隐状态 $h_{t-1}$ 共同决定了时刻 $t$ 的隐状态 $h_t$ 以及输出 $\widehat{y_t}$ 。对于长度为 $T$ 的时间序列数据 $x$ ，循环使用该结构 $T$ 次可以得到 $S-RNN$ 算法在各个时刻的输出 $\hat{y}=\left[\widehat{y_1},\widehat{y_2},\ldots,\widehat{y_t},\ldots,\widehat{y_T}\right]$ 。上述关系用数学公式表示为：
 
