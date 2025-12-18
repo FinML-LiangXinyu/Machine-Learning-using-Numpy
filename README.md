@@ -59,14 +59,6 @@ $\delta^{\left(T\right)}=\frac{\partial L}{\partial z^{\left(T\right)}}=h^{\left
 激活函数为： $y=tanh\left(x\right)=\frac{e^x-e^{-x}}{e^x+e^{-x}}$。则： $\sigma^\prime\left(z^{\left(t\right)}\right)=1-h^{\left(t\right)}\odot h^{\left(t\right)}$ 
 
 激活函数为： $y=relu\left(x\right)=max\left(0,x\right)$ 。则： $\sigma^\prime\left(z^{\left(t\right)}\right)=1,if\ z^{\left(t\right)}>0;=0,if\ z^{\left(t\right)}\le0$ 
-
-对于连续实例，损失函数为如下均方误损失函数：
-
-$L=\frac{1}{2}\left(y-h^{\left(T\right)}\right)^2$
-
-回归算法输出层 $h^{\left(T\right)}$ 为一标量，输出层对应的 ${\delta}^{\left(T\right)}$ 同样为一标量：
-
-$\delta^{\left(T\right)}=\frac{\partial L}{\partial z^{\left(T\right)}}=h^{\left(T\right)}-y$
 ## 二、简单循环神经网络
 对于长度为 $T$ 的时间序列数据 $x=\left[x_1,x_2,\ldots,x_t,\ldots,x_T\right]$ ， $x_t$ 为时刻 $t$ 的输入向量。简单循环神经网络 $S-RNN$ 算法的结构单元如下：
 
